@@ -28,6 +28,7 @@ function qSet (obj, path, val) {
 	}
 
 	prev[key] = val;
+	return obj;
 };
 
 module.exports = qSet;
