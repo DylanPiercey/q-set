@@ -1,6 +1,6 @@
 {
   "name": "q-set",
-  "version": "0.1.2",
+  "version": "0.1.6",
   "description": "Set a query string style field on an object.",
   "author": "Dylan Piercey <pierceydylan@gmail.com>",
   "main": "index.js",
@@ -9,9 +9,7 @@
     "url": "https://github.com/DylanPiercey/q-set"
   },
   "devDependencies": {
-    "gulp": "^3.9.0"
-  },
-  "dependencies": {
+    "gulp": "^3.9.0",
     "gulp-mocha": "^2.1.3"
   }
 }

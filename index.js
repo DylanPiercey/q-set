@@ -1,6 +1,7 @@
 var matchArray = /[^\[\]]+|(?=\[\])/g;
 
 /*
+ * @description
  * A setter for querystring style fields like "a[b][c]".
  * The setter will create arrays for values like "a[]".
  *
