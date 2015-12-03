@@ -1,4 +1,4 @@
-var matchArray = /[^\[\]]/g;
+var matchArray = /[^\[\]]+/g;
 var temp       = [];
 
 /*
