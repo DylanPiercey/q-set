@@ -2,8 +2,9 @@ var matchArray = /[^\[\]]/g;
 var temp       = [];
 
 /*
+ * @description
  * A setter for querystring style fields like "a[b][c]".
- * The setter will create arrays for values like "a[]".
+ * The setter will create arrays for repeat keys.
  *
  * @param {Object} obj
  * @param {String} path
