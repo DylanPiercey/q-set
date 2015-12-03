@@ -1,4 +1,5 @@
-var matchArray = /[^\[\]]+|(?=\[\])/g;
+var matchArray = /[^\[\]]/g;
+var temp       = [];
 
 /*
  * A setter for querystring style fields like "a[b][c]".
@@ -9,25 +10,21 @@ var matchArray = /[^\[\]]+|(?=\[\])/g;
  * @param {*} val
  */
 function qSet (obj, path, val) {
+	var key;
 	var keys = path.match(matchArray);
+	var last = keys.pop();
 	var len  = keys.length;
 	var cur  = obj;
 
 	for (var i = 0; i < len; i++) {
-		var key  = keys[i];
-		var prev = cur;
-
-		if (key === "") key = cur.length;
-		cur = cur[key] != null
-			? cur[key]
-			: cur[key] = (
-				keys[i + 1] === ""
-					? []
-					: {}
-			);
+		key = keys[i];
+		cur = cur[key] != null ? cur[key] : cur[key] = {};
 	}
 
-	prev[key] = val;
+	cur[last] = last in cur
+		? temp.concat(cur[last], val)
+		: val;
+
 	return obj;
 };
 

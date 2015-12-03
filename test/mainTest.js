@@ -16,9 +16,10 @@ describe("Q-Set", function () {
 
 	it("should push a key", function () {
 		var obj = {};
-		set(obj, "a[]", 1);
-		assert.equal(obj.a[0], 1);
-		set(obj, "a[]", 1);
-		assert.equal(obj.a[1], 1);
+		set(obj, "a", 1);
+		assert.equal(obj.a, 1);
+		set(obj, "a", 2);
+		assert.equal(obj.a[1], 2);
 	});
+
 });
