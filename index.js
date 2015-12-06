@@ -29,8 +29,7 @@ function qSet (obj, path, val) {
 				: {};
 	}
 
-	if (key === "[]") cur.push(val);
-	else prev[key] = exist
+	prev[key] = exist
 		? temp.concat(cur, val)
 		: val;
 
