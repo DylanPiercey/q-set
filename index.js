@@ -1,4 +1,4 @@
-var matchArray = /[^\[\]]+/g;
+var matchArray = /[^\[\]]+|\[\]/g;
 var temp       = [];
 
 /*
@@ -11,19 +11,27 @@ var temp       = [];
  * @param {*} val
  */
 function qSet (obj, path, val) {
-	var key;
 	var keys = path.match(matchArray);
-	var last = keys.pop();
 	var len  = keys.length;
 	var cur  = obj;
+	var key, prev, exist;
 
 	for (var i = 0; i < len; i++) {
-		key = keys[i];
-		cur = cur[key] != null ? cur[key] : cur[key] = {};
+		prev = cur;
+		key  = keys[i];
+		if (key === "[]") key = cur.length;
+		// Make path as we go.
+		cur = (exist = key in cur)
+			? cur[key]
+			// Check if the next path is an explicit array.
+			: cur[key] = keys[i + 1] === "[]"
+				? []
+				: {};
 	}
 
-	cur[last] = last in cur
-		? temp.concat(cur[last], val)
+	if (key === "[]") cur.push(val);
+	else prev[key] = exist
+		? temp.concat(cur, val)
 		: val;
 
 	return obj;
