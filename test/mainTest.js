@@ -30,6 +30,14 @@ describe("Q-Set", function () {
 		assert.deepEqual(obj.a, [1, 2]);
 	});
 
+	it("should create an array with 0 integer.", function () {
+		var obj = {};
+		set(obj, "a[0]", 1);
+		assert.deepEqual(obj.a, [1]);
+		set(obj, "a[1]", 2);
+		assert.deepEqual(obj.a, [1, 2]);
+	});
+
 	it("should push a nested key (explicit)", function () {
 		var obj = {};
 		set(obj, "a[][b]", 1);

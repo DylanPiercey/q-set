@@ -14,17 +14,18 @@ function qSet (obj, path, val) {
 	var keys = path.match(matchArray);
 	var len  = keys.length;
 	var cur  = obj;
-	var key, prev, exist;
+	var key, prev, next, exist;
 
 	for (var i = 0; i < len; i++) {
 		prev = cur;
 		key  = keys[i];
+		next = keys[i + 1];
 		if (key === "[]") key = cur.length;
 		// Make path as we go.
 		cur = (exist = key in cur)
 			? cur[key]
 			// Check if the next path is an explicit array.
-			: cur[key] = keys[i + 1] === "[]"
+			: cur[key] = next === "[]" || next === "0"
 				? []
 				: {};
 	}
