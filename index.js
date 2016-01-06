@@ -25,16 +25,18 @@ function qSet (obj, path, val) {
 		cur = (exist = key in cur)
 			? cur[key]
 			// Check if the next path is an explicit array.
-			: cur[key] = next === "[]" || next === "0"
-				? []
-				: {};
+			: cur[key] = isArrayKey(next) ? [] : {};
 	}
 
-	prev[key] = exist
-		? temp.concat(cur, val)
-		: val;
+	prev[key] = exist ? temp.concat(cur, val) : val;
 
 	return obj;
 };
+
+function isArrayKey (str) {
+	if (str === "[]") return true;
+	var n = ~~Number(str);
+	return String(n) === str && n >= 0;
+}
 
 module.exports = qSet;

@@ -35,10 +35,11 @@ var obj = {};
 set(obj, "a[]", 1); //-> { a: [1] }
 set(obj, "a[]", 2); //-> { a: [1, 2] }
 
-// Will also automatically start "0" keys as an array.
+// Will also automatically create an array when the a key is a positive integer.
 var obj = {};
 set(obj, "a[0]", 1); //-> { a: [1] }
 set(obj, "a[1]", 2); //-> { a: [1, 2] }
+set({}, "b[2]", 3); //-> { b: [,,3] }
 
 // Nested array creation.
 var obj = {};
