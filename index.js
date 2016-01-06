@@ -1,5 +1,6 @@
-var matchArray = /[^\[\]]+|\[\]/g;
-var temp       = [];
+var matchArray   = /[^\[\]]+|\[\]/g;
+var matchInteger = /^\d+$/;
+var temp         = [];
 
 /*
  * @description
@@ -25,18 +26,14 @@ function qSet (obj, path, val) {
 		cur = (exist = key in cur)
 			? cur[key]
 			// Check if the next path is an explicit array.
-			: cur[key] = isArrayKey(next) ? [] : {};
+			: cur[key] = (next === "[]" || matchInteger.test(next))
+				? []
+				: {};
 	}
 
 	prev[key] = exist ? temp.concat(cur, val) : val;
 
 	return obj;
 };
-
-function isArrayKey (str) {
-	if (str === "[]") return true;
-	var n = ~~Number(str);
-	return String(n) === str && n >= 0;
-}
 
 module.exports = qSet;
