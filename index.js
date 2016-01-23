@@ -36,4 +36,19 @@ function qSet (obj, path, val) {
 	return obj;
 };
 
+/**
+ * Like qset but doesn't resolve nested params such as a[b][c].
+ *
+ * @param {Object} obj
+ * @param {String} path
+ * @param {*} val
+ */
+function fSet (obj, key, val) {
+	obj[key] = key in obj
+		? temp.concat(obj[key], val)
+		: val;
+	return obj;
+}
+
+qSet.flat      = fSet;
 module.exports = qSet;

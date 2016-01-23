@@ -47,6 +47,16 @@ set(obj, "a[][b]", 1); //-> { a: [{ b: 1 }] }
 set(obj, "a[][b]", 2); //-> { a: [{ b: 1 }, { b: 2 }] }
 ```
 
+### Flat qSet
+```javascript
+var fSet = require('q-set').flat;
+
+// Doesn't unflatten qs syntax but does append to arrays.
+var obj = {};
+set(obj, "a[1]", 1); //-> { "a[1]": 1 }
+set(obj, "a[1]", 2); //-> { "a[1]": [1, 2] }
+```
+
 ### Contributions
 
 * Use gulp to run tests.

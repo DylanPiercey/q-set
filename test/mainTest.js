@@ -1,5 +1,6 @@
 var assert = require("assert");
 var set    = require("../");
+var fSet   = set.flat;
 
 describe("Q-Set", function () {
 	it("should set a key", function () {
@@ -51,5 +52,26 @@ describe("Q-Set", function () {
 		set(obj, "a[][b]", 2);
 		assert.deepEqual(obj.a, [{ b: 1 }, { b: 2 }]);
 	});
+});
 
+describe("F-Set", function () {
+	it("should set a key", function () {
+		var obj = {};
+		fSet(obj, "a", 1);
+		assert.equal(obj.a, 1);
+	});
+
+	it("should not set a deep key", function () {
+		var obj = {};
+		fSet(obj, "a[b][c]", 1);
+		assert.equal(obj["a[b][c]"], 1);
+	});
+
+	it("should push a key", function () {
+		var obj = {};
+		fSet(obj, "a", 1);
+		assert.deepEqual(obj.a, 1);
+		fSet(obj, "a", 2);
+		assert.deepEqual(obj.a, [1, 2]);
+	});
 });
