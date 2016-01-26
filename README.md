@@ -55,6 +55,11 @@ var fSet = require('q-set').flat;
 var obj = {};
 set(obj, "a[1]", 1); //-> { "a[1]": 1 }
 set(obj, "a[1]", 2); //-> { "a[1]": [1, 2] }
+
+// fSet will also automatically convert array push "[]" to indexes.
+var obj = {};
+set(obj, "a[]", 1); //-> { "a[0]": 1 }
+set(obj, "a[]", 2); //-> { "a[0]": 1, "a[1]": 2 }
 ```
 
 ### Contributions

@@ -74,4 +74,17 @@ describe("F-Set", function () {
 		fSet(obj, "a", 2);
 		assert.deepEqual(obj.a, [1, 2]);
 	});
+
+	it("should insert indexes for push syntax", function () {
+		var obj = {};
+		fSet(obj, "a[]", 1);
+		assert.deepEqual(obj["a[0]"], 1);
+		fSet(obj, "a[]", 2);
+		assert.deepEqual(obj["a[1]"], 2);
+		// Nested
+		fSet(obj, "b[][c][]", 1);
+		assert.deepEqual(obj["b[0][c][0]"], 1);
+		fSet(obj, "b[][c][]", 2);
+		assert.deepEqual(obj["b[1][c][0]"], 2);
+	});
 });
