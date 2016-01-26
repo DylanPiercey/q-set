@@ -62,12 +62,11 @@ function fSet (obj, key, val) {
 function arrayPushIndexes (obj, key) {
 	var path = key.split("[]");
 	if (path.length === 1) return key;
-	var cur = path.shift();
+	var cur = path[0];
 	var keys = Object.keys(obj);
 
-	for (var i = 0, len = path.length; i < len; i++) {
-		cur += "[" + findLastIndex(keys, cur) + "]";
-		cur += path[i];
+	for (var i = 1, len = path.length; i < len; i++) {
+		cur += "[" + findLastIndex(keys, cur) + "]" + path[i];
 	}
 
 	return cur;
