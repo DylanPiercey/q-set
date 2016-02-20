@@ -9,6 +9,12 @@ describe("Q-Set", function () {
 		assert.equal(obj.a, 1);
 	});
 
+	it("should set an empty key", function () {
+		var obj = {};
+		set(obj, "", 1);
+		assert.equal(obj[""], 1);
+	});
+
 	it("should set a deep key", function () {
 		var obj = {};
 		set(obj, "a[b][c]", 1);
@@ -59,6 +65,12 @@ describe("F-Set", function () {
 		var obj = {};
 		fSet(obj, "a", 1);
 		assert.equal(obj.a, 1);
+	});
+
+	it("should set an empty key", function () {
+		var obj = {};
+		fSet(obj, "", 1);
+		assert.equal(obj[""], 1);
 	});
 
 	it("should not set a deep key", function () {

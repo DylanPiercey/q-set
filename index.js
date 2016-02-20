@@ -12,7 +12,7 @@ var temp         = [];
  * @param {*} val
  */
 function qSet (obj, path, val) {
-	var keys = path.match(matchArray);
+	var keys = path === "" ? [""] : path.match(matchArray);
 	var len  = keys.length;
 	var cur  = obj;
 	var key, prev, next, exist;
