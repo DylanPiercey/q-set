@@ -1,3 +1,5 @@
+"use strict";
+
 var matchArray   = /[^\[\]]+|\[\]/g;
 var matchInteger = /^\d+$/;
 var temp         = [];
@@ -23,7 +25,7 @@ function qSet (obj, path, val) {
 		next = keys[i + 1];
 		if (key === "[]") key = cur.length;
 		// Make path as we go.
-		cur = (exist = key in cur)
+		cur = (exist = typeof cur === "object" && key in cur)
 			? cur[key]
 			// Check if the next path is an explicit array.
 			: cur[key] = (next === "[]" || matchInteger.test(next))

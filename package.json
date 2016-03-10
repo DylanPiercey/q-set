@@ -1,6 +1,6 @@
 {
   "name": "q-set",
-  "version": "1.4.3",
+  "version": "1.4.4",
   "description": "Set a query string style field on an object.",
   "author": "Dylan Piercey <pierceydylan@gmail.com>",
   "main": "index.js",
