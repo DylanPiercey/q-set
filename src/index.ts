@@ -24,7 +24,7 @@ export function deep(obj: any, path: string, val: any): any {
     }
 
     // Make path as we go.
-    cur = (exists = key in cur)
+    cur = (exists = typeof cur === "object" && key in cur)
       ? cur[key]
       // Check if the next path is an explicit array.
       : cur[key] = (next === "[]" || matchInteger.test(next))
