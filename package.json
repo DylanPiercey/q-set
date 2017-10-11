@@ -1,9 +1,9 @@
 {
   "name": "q-set",
-  "version": "1.4.4",
   "description": "Set a query string style field on an object.",
-  "version": "1.4.3",
+  "version": "1.4.4",
   "author": "Dylan Piercey <pierceydylan@gmail.com>",
+  "bugs": "https://github.com/DylanPiercey/q-set/issues",
   "devDependencies": {
     "@types/mocha": "^2.2.43",
     "@types/node": "^8.0.34",
@@ -15,6 +15,13 @@
   "files": [
     "dist"
   ],
+  "homepage": "https://github.com/DylanPiercey/q-set",
+  "keywords": [
+    "q-set",
+    "querystring",
+    "set"
+  ],
+  "license": "MIT",
   "main": "dist/index.js",
   "repository": {
     "type": "git",
