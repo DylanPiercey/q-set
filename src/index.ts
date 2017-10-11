@@ -2,7 +2,7 @@ const matchArray: RegExp = /[^\[\]]+|\[\]/g;
 const matchInteger: RegExp = /^\d+$/;
 const temp: any[] = [];
 
-/*
+/**
  * A setter for querystring style fields like "a[b][c]".
  * The setter will create arrays for repeat keys.
  */
