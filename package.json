@@ -1,15 +1,29 @@
 {
   "name": "q-set",
-  "version": "1.4.3",
   "description": "Set a query string style field on an object.",
+  "version": "1.4.3",
   "author": "Dylan Piercey <pierceydylan@gmail.com>",
-  "main": "index.js",
+  "devDependencies": {
+    "@types/mocha": "^2.2.43",
+    "@types/node": "^8.0.34",
+    "mocha": "^4.0.1",
+    "ts-node": "^3.3.0",
+    "tslint": "^5.7.0",
+    "typescript": "^2.5.3"
+  },
+  "files": [
+    "dist"
+  ],
+  "main": "dist/index.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/DylanPiercey/q-set"
   },
-  "devDependencies": {
-    "gulp": "^3.9.1",
-    "gulp-mocha": "^2.2.0"
-  }
+  "scripts": {
+    "build": "npm run lint && tsc",
+    "lint": "tslint -t codeFrame -c tslint.json '{src,test}/**/*.ts'",
+    "prepublish": "npm test",
+    "test": "npm run build && mocha -r ts-node/register ./test/**/*.test.ts"
+  },
+  "types": "dist/index.d.ts"
 }
