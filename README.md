@@ -22,7 +22,7 @@
   </a>
   <!-- Size -->
   <a href="https://npmjs.org/package/q-set">
-    <img src="https://img.shields.io/badge/size-1.19kb-green.svg" alt="Browser Bundle Size"/>
+    <img src="https://img.shields.io/badge/size-669b-green.svg" alt="Browser Bundle Size"/>
   </a>
 </h1>
 
