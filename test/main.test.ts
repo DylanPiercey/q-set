@@ -1,6 +1,5 @@
 import * as assert from "assert";
-import "mocha";
-import { deep, shallow } from "../dist";
+import { deep, shallow } from "../src";
 
 describe("deep", () => {
   it("should set a key", () => {
@@ -48,7 +47,7 @@ describe("deep", () => {
   it("should create an array with any integer", () => {
     const obj: any = {};
     deep(obj, "a[12]", 1);
-    assert.deepEqual(obj.a, [ , , , , , , , , , , , , 1 ]);
+    assert.deepEqual(obj.a, [, , , , , , , , , , , , 1]);
   });
 
   it("should push a nested key (explicit)", () => {
@@ -98,5 +97,11 @@ describe("shallow", () => {
     assert.deepEqual(obj["b[0][c][0]"], 1);
     shallow(obj, "b[][c][]", 2);
     assert.deepEqual(obj["b[1][c][0]"], 2);
+  });
+
+  it("should insert indexes for push syntax in a sparse array", () => {
+    const obj: any = { "a[1]": 2, "a[3]": 4 };
+    shallow(obj, "a[]", 5);
+    assert.deepEqual(obj["a[4]"], 5);
   });
 });

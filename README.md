@@ -12,6 +12,18 @@
   <a href="http://typescriptlang.org">
     <img src="https://img.shields.io/badge/%3C%2F%3E-typescript-blue.svg" alt="TypeScript"/>
   </a>
+  <!-- Prettier -->
+  <a href="https://github.com/prettier/prettier">
+    <img src="https://img.shields.io/badge/styled_with-prettier-ff69b4.svg" alt="Styled with prettier"/>
+  </a>
+  <!-- Travis build -->
+  <a href="https://travis-ci.org/DylanPiercey/q-set">
+  <img src="https://img.shields.io/travis/DylanPiercey/q-set.svg" alt="Build status"/>
+  </a>
+  <!-- Coveralls coverage -->
+  <a href="https://coveralls.io/github/DylanPiercey/q-set">
+    <img src="https://img.shields.io/coveralls/DylanPiercey/q-set.svg" alt="Test Coverage"/>
+  </a>
   <!-- NPM version -->
   <a href="https://npmjs.org/package/q-set">
     <img src="https://img.shields.io/npm/v/q-set.svg" alt="NPM Version"/>

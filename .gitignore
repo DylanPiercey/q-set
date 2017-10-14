@@ -11,3 +11,5 @@ npm-debug.log
 
 # Build
 dist
+coverage
+.nyc_output

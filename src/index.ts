@@ -7,7 +7,8 @@ const temp: any[] = [];
  * The setter will create arrays for repeat keys.
  */
 export function deep(obj: any, path: string, val: any): any {
-  const keys: string[] = path === "" ? [""] : path.match(matchArray);
+  const keys: string[] =
+    path === "" ? [""] : path.match(matchArray) as string[];
   const len: number = keys.length;
   let cur: any = obj;
   let prev: any;
@@ -26,10 +27,8 @@ export function deep(obj: any, path: string, val: any): any {
     // Make path as we go.
     cur = (exists = typeof cur === "object" && key in cur)
       ? cur[key]
-      // Check if the next path is an explicit array.
-      : cur[key] = (next === "[]" || matchInteger.test(next))
-        ? []
-        : {};
+      : // Check if the next path is an explicit array.
+        (cur[key] = next === "[]" || matchInteger.test(next) ? [] : {});
   }
 
   prev[key] = exists ? temp.concat(cur, val) : val;
@@ -42,9 +41,7 @@ export function deep(obj: any, path: string, val: any): any {
  */
 export function shallow(obj: any, key: string, val: any): any {
   key = arrayPushIndexes(obj, key);
-  obj[key] = key in obj
-    ? temp.concat(obj[key], val)
-    : val;
+  obj[key] = key in obj ? temp.concat(obj[key], val) : val;
   return obj;
 }
 
@@ -75,16 +72,14 @@ function arrayPushIndexes(obj: any, key: string): string {
 function findLastIndex(keys: string[], path: string): number {
   let last: number = -1;
 
-  for (let i = keys.length; i--;) {
+  for (let i = keys.length; i--; ) {
     const key: string = keys[i];
     if (key.indexOf(path) !== 0) {
       continue;
     }
 
     const index: number = Number(
-      key
-        .replace(path, "")
-        .slice(1, key.indexOf("]") - 1),
+      key.replace(path, "").slice(1, key.indexOf("]") - 1)
     );
 
     if (index > last) {
