@@ -3,10 +3,15 @@ const matchInteger: RegExp = /^\d+$/;
 const temp: any[] = [];
 
 /**
+ * @description
  * A setter for querystring style fields like "a[b][c]".
  * The setter will create arrays for repeat keys.
+ *
+ * @param obj The object to set a value on.
+ * @param path The querystring path to set.
+ * @param value The value to set at the path.
  */
-export function deep(obj: any, path: string, val: any): any {
+export function deep(obj: any, path: string, value: any): any {
   const keys: string[] =
     path === "" ? [""] : path.match(matchArray) as string[];
   const len: number = keys.length;
@@ -31,13 +36,18 @@ export function deep(obj: any, path: string, val: any): any {
         (cur[key] = next === "[]" || matchInteger.test(next) ? [] : {});
   }
 
-  prev[key] = exists ? temp.concat(cur, val) : val;
+  prev[key] = exists ? temp.concat(cur, value) : value;
 
   return obj;
 }
 
 /**
- * Appends to an object using query string syntax with `[]` push support.
+ * @description
+ * Appends to an object using query string syntax with "[]" syntax push support.
+ *
+ * @param obj The object to set a value on.
+ * @param path The querystring path to set.
+ * @param value The value to set at the path.
  */
 export function shallow(obj: any, key: string, val: any): any {
   key = arrayPushIndexes(obj, key);
