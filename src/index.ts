@@ -5,7 +5,10 @@ const temp: any[] = [];
 /**
  * @description
  * A setter for querystring style fields like "a[b][c]".
- * The setter will create arrays for repeat keys.
+ * The setter will create arrays for repeat keys and supports the "[]" push syntax.
+ *
+ * @example
+ * deep({}, "a[b][c]", 1) // { a: { b: { c: 1 } } }
  *
  * @param obj The object to set a value on.
  * @param path The querystring path to set.
@@ -44,6 +47,10 @@ export function deep(obj: any, path: string, value: any): any {
 /**
  * @description
  * Appends to an object using query string syntax with "[]" syntax push support.
+ *
+ * @example
+ * shallow({}, "a[b][c]", 1) // { "a[b][c]": 1 }
+ * shallow({}, "a[]", 1) // { a: [1] }
  *
  * @param obj The object to set a value on.
  * @param path The querystring path to set.
